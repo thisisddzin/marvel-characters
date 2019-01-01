@@ -57,7 +57,7 @@ export default class Main extends Component {
   }
 
   render() {
-    const { characters, loading, inputError, inputValue } = this.state;
+    const { characters, loading, inputError} = this.state;
 
     return (
       <Fragment>
@@ -66,7 +66,7 @@ export default class Main extends Component {
         <Container>
           <img src={spider} height="80%" alt="spiderman" />
           <Form onSubmit={this.search}>
-            <input  value={ inputValue } onChange={ e => this.setState({ inputValue: e.target.value })} placeholder="Insert the name of the character." type="text" />
+            <input onChange={ e => this.setState({ inputValue: e.target.value })} placeholder="Insert the name of the character." type="text" />
             <button type="submit">Search</button>
           </Form>
           {loading ? (

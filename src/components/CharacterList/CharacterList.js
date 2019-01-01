@@ -14,7 +14,7 @@ const CharacterList = ({ characters }) => (
           {character.description}
           {' '}
         </li>
-        <a target="_blank" rel="noopenernoreferrer" href={character.urls[0].url}>Ver mais.</a>
+        <a target="_blank" rel="noopener noreferrer" href={character.urls[0].url}>Ver mais.</a>
       </List>
     ))}
   </Container>

@@ -54,3 +54,9 @@ export const Form = styled.form`
     width: 300px;
   }
 `;
+
+export const Load = styled.span`
+  font-size: 50px;
+  color: red;
+  margin-top: 100px;
+`;

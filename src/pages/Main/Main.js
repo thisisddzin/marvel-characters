@@ -5,17 +5,21 @@ import Header from '../../components/Header/Header';
 import CharacterList from '../../components/CharacterList/CharacterList';
 
 import GlobalStyle from '../../styles/global';
-import { Container, Form } from './style';
+import { Container, Form, Load } from './style';
 
 import api from '../../services/api';
 
 export default class Main extends Component {
   state = {
     characters: [],
+    loading: false,
+    inputValue: '',
+    inputError: false,
   };
 
   async componentDidMount() {
-    this.setState({ characters: await this.runApi() });
+    this.setState({ loading: true });
+    this.setState({ loading: false, characters: await this.runApi() });
   }
 
   runApi = async () => {
@@ -30,18 +34,49 @@ export default class Main extends Component {
     }
   };
 
+  search = async (e) => {
+    e.preventDefault();
+
+    this.setState({ loading: true, characters: await this.runApi() });
+
+    try {
+      const { characters, inputValue } = this.state;
+      const regex = new RegExp(inputValue, 'i');
+      const char = characters.filter(char => char.name.match(regex));
+      console.log(char);
+      if (char.length < 1 ) {
+        this.setState({ inputError: true });
+      }
+
+      return this.setState({ characters: char });
+    } catch (err) {
+      console.warn(err);
+    } finally {
+      this.setState({ loading: false });
+    }
+  }
+
   render() {
+    const { characters, loading, inputError, inputValue } = this.state;
+
     return (
       <Fragment>
         <GlobalStyle />
         <Header />
         <Container>
           <img src={spider} height="80%" alt="spiderman" />
-          <Form>
-            <input placeholder="Insert the name of the character." type="text" />
-            <button onClick={this.runApi}>Search</button>
+          <Form onSubmit={this.search}>
+            <input  value={ inputValue } onChange={ e => this.setState({ inputValue: e.target.value })} placeholder="Insert the name of the character." type="text" />
+            <button type="submit">Search</button>
           </Form>
-          <CharacterList characters={this.state.characters} />
+          {loading ? (
+            <Load>
+              <i className="fa fa-spinner fa-pulse" />
+            </Load>
+          ) : (
+            <CharacterList characters={characters} />
+          )}
+          {inputError ? <Load>Não encontrado.</Load> : null}
         </Container>
       </Fragment>
     );

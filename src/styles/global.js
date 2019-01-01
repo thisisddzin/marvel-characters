@@ -2,6 +2,8 @@ import { createGlobalStyle } from 'styled-components';
 
 import fundo from '../assets/images/fundo.png';
 
+import 'font-awesome/css/font-awesome.css';
+
 const GlobalStyle = createGlobalStyle`
   * {
     padding: 0; margin: 0;

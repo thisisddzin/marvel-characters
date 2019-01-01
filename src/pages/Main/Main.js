@@ -3,9 +3,10 @@ import React, { Fragment, Component } from 'react';
 import spider from '../../assets/images/spiderman.png';
 import Header from '../../components/Header/Header';
 import CharacterList from '../../components/CharacterList/CharacterList';
+import Footer from '../../components/Footer/Footer';
 
 import GlobalStyle from '../../styles/global';
-import { Container, Form, Load } from './style';
+import { Container, Form, Load, Bg } from './style';
 
 import api from '../../services/api';
 
@@ -57,12 +58,13 @@ export default class Main extends Component {
   }
 
   render() {
-    const { characters, loading, inputError} = this.state;
+    const { characters, loading, inputError } = this.state;
 
     return (
       <Fragment>
         <GlobalStyle />
         <Header />
+        <Bg />
         <Container>
           <img src={spider} height="80%" alt="spiderman" />
           <Form onSubmit={this.search}>
@@ -78,6 +80,7 @@ export default class Main extends Component {
           )}
           {inputError ? <Load>Não encontrado.</Load> : null}
         </Container>
+        <Footer />
       </Fragment>
     );
   }

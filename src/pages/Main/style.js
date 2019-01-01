@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import fundo from '../../assets/images/fundo.png';
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -53,6 +55,24 @@ export const Form = styled.form`
   @media only screen and (max-width: 400px) {
     width: 300px;
   }
+
+  @media only screen and (max-width: 350px) {
+    input {
+      width: 200px;
+    }
+  }
+`;
+
+export const Bg = styled.div`
+  background: url(${fundo}) no-repeat;
+  background-size: cover;
+  background-position: top right;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
 `;
 
 export const Load = styled.span`

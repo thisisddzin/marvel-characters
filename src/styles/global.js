@@ -1,7 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 
-import fundo from '../assets/images/fundo.png';
-
 import 'font-awesome/css/font-awesome.css';
 
 const GlobalStyle = createGlobalStyle`
@@ -13,10 +11,6 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'Staatliches', cursive;
-    background: url(${fundo}) no-repeat;
-    background-size:cover;
-    background-position: top right;
-    background-attachment: fixed;
     /* background: rgb(226, 223, 223); */
     -webkit-font-smoothing: antialiased !important;
     text-rendering: optimizeLegibility !important;

@@ -37,7 +37,7 @@ export default class Main extends Component {
   search = async (e) => {
     e.preventDefault();
 
-    this.setState({ loading: true, characters: await this.runApi() });
+    this.setState({ loading: true, characters: await this.runApi(), inputError: false });
 
     try {
       const { characters, inputValue } = this.state;
